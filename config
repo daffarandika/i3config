@@ -1,6 +1,6 @@
 set $mod Mod4
 exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
-exec feh --bg-scale ~/Pictures/wallpaper/4.jpg
+exec feh --bg-scale ~/Pictures/wallpaper/1.png
 
 font pango:monospace 8
 
@@ -139,6 +139,10 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
+# gaps
+gaps inner 15px
+smart_gaps inverse_outer
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -171,9 +175,10 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+
 bindsym $mod+r mode "resize"
 
-client.focused #666666 #666666 #ffffff
+client.focused #6DA073 #6DA073 #ffffff
 bar {
         # status_command exec ~/.config/i3status/i3status/mybar.sh
         # status_command /usr/bin/i3blocks
@@ -182,10 +187,10 @@ bar {
         colors {
             background #282828
             statusline #ffffff
-            separator #666666
+            separator  #6DA073
 
-            focused_workspace  #666666 #666666 #ffffff
-            active_workspace   #000000 #000000 #ffffff
+            focused_workspace  #6DA073 #6DA073 #ffffff
+            active_workspace   #6DA073 #6DA073 #ffffff
             inactive_workspace #282828 #282828 #888888
             urgent_workspace   #2f343a #9d0006 #ffffff
             binding_mode       #2f343a #900000 #ffffff
