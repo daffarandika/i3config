@@ -179,6 +179,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 client.focused #6DA073 #6DA073 #ffffff
+client.focused_inactive #8F8071 #8F8071 #ffffff
+client.unfocused #8F8071 #8F8071 #ffffff
 bar {
         # status_command exec ~/.config/i3status/i3status/mybar.sh
         # status_command /usr/bin/i3blocks
