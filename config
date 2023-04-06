@@ -50,7 +50,7 @@ bindsym $mod+Right focus right
 # move focused window
 
 #shortcuts
-bindsym $mod+i exec kitty -e vim ~/.config/i3/config
+bindsym $mod+i exec kitty -e nvim ~/.config/i3/config
 bindsym $mod+Shift+f exec firefox
 bindsym $mod+Shift+a exec android-studio
 bindsym $mod+Shift+p exec poweroff
@@ -182,8 +182,6 @@ client.focused #6DA073 #6DA073 #ffffff
 client.focused_inactive #8F8071 #8F8071 #ffffff
 client.unfocused #8F8071 #8F8071 #ffffff
 bar {
-        # status_command exec ~/.config/i3status/i3status/mybar.sh
-        # status_command /usr/bin/i3blocks
         status_command SCRIPT_DIR=~/.config/i3blocks/scripts i3blocks 
         position top
         colors {
