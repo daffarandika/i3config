@@ -144,7 +144,7 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # gaps
-gaps inner 15px
+gaps inner 10px
 smart_gaps inverse_outer
 
 # reload the configuration file
