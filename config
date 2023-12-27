@@ -2,15 +2,13 @@ set $mod Mod4
 exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
 exec feh --bg-scale ~/Pictures/wallpaper/1.png
 
-font pango:monospace 8
-
 exec --no-startup-id dex --autostart --environment i3
 
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 exec --no-startup-id nm-applet
 
-exec --no-startup-id redshift -P -O 3000
+exec --no-startup-id redshift -x
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -28,7 +26,7 @@ floating_modifier $mod
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
-tiling_drag modifier titlebar
+# tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec kitty
@@ -54,7 +52,7 @@ bindsym $mod+Right focus right
 # move focused window
 
 #shortcuts
-bindsym $mod+i exec kitty -e nvim ~/.config/i3/config
+bindsym $mod+i exec kitty -e vim ~/.config/i3/config
 bindsym $mod+Shift+f exec firefox
 bindsym $mod+Shift+a exec android-studio
 bindsym $mod+Shift+p exec poweroff
@@ -66,13 +64,19 @@ bindsym $mod+Shift+s scratchpad show
 
 # screenshot
 bindsym Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
-bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
+# bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)" && notify-send --icon=gtk-info Test "This is a test"
+bindsym Print exec --no-startup-id notify-send --icon=gtk-info "Saved to folder" "/home/$USER/Pictures/$(date)" && maim "/home/$USER/Pictures/$(date).png"
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+# bindsym $mod+Shift+l exec --no-startup-id "$HOME/codes/bash/capsLockIndicator"
+
+# bindsym Mod3+q exec --no-startup-id capsLockIndicator
+# bindsym Mod3 exec --no-startup-id "$HOME/codes/bash/capsLockIndicator"
+bindsym --release Caps_Lock exec --no-startup-id "$HOME/codes/bash/capsLockIndicator"
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -143,10 +147,6 @@ bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# gaps
-gaps inner 10px
-smart_gaps inverse_outer
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -199,4 +199,7 @@ bar {
             urgent_workspace   #2f343a #9d0006 #ffffff
             binding_mode       #2f343a #900000 #ffffff
         }
+	font pango: JetBrainsMonoNL Nerd Font Mono 10
 }
+
+font pango: JetBrainsMonoNL Nerd Font Mono 11
