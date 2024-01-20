@@ -1,5 +1,5 @@
 set $mod Mod4
-exec xinput set-prop "Elan Touchpad" "libinput Tapping Enabled" 1
+exec xinput set-prop "093A:0255 Touchpad" "libinput Tapping Enabled" 1
 exec feh --bg-scale ~/Pictures/wallpaper/1.png
 
 exec --no-startup-id dex --autostart --environment i3
@@ -18,6 +18,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && exec pkill -SIGRTMIN+2 i3blocks
 
 # Use brightnessctl to adjust brightness on monitor
+# to run this first install brightnessctl then add your current user to the video group
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 20-
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +20
 
@@ -43,6 +44,8 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+bindsym $mod+Tab workspace back_and_forth
+
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
@@ -53,12 +56,19 @@ bindsym $mod+Right focus right
 
 #shortcuts
 bindsym $mod+i exec kitty -e vim ~/.config/i3/config
-bindsym $mod+Shift+f exec firefox
+bindsym $mod+Shift+f exec firefox 
 bindsym $mod+Shift+a exec android-studio
 bindsym $mod+Shift+p exec poweroff
 bindsym $mod+Shift+x exec kitty -e ranger
 
 # scratchpad
+for_window [class="bg_browser"] floating enable
+for_window [class="bg_browser"] move position 277 156
+for_window [class="bg_browser"] resize set 1366 768
+for_window [class="bg_browser"] move scratchpad
+for_window [class="bg_browser"] border pixel 3
+# exec_always --no-startup-id firefox --new-tab https://music.youtube.com/ --no-remote --class="bg_browser" &
+# bindsym $mod+m [class="bg_browser"] scratchpad show
 bindsym $mod+m move scratchpad
 bindsym $mod+Shift+s scratchpad show
 
